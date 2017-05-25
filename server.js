@@ -5,6 +5,8 @@ const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 
+
+const port = process.env.PORT || 4000;
 var app = express();
 
 //Partials - A HTML code that can be re-used in hbs files
@@ -52,7 +54,6 @@ hbs.registerHelper('screamIt', (lowerCapText) => {
 });
 
 app.get('/', (req, res) => {
-    // res.send('<h1>Hello Express!</h1>');
     res.render('home.hbs', {
         pageTitle: 'Home Page',
         welcomeMessage: 'Welcome to my awesome page'});
@@ -69,6 +70,6 @@ app.get('/bad', (req, res) => {
     });
 });
 
-app.listen(4000, () => {
-    console.log('Server is up on port 4000');
+app.listen(port, () => {
+    console.log(`Server is up on port ${port}`);
 });
